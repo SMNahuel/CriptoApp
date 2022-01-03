@@ -43,3 +43,10 @@ export const AddBoton = styled.TouchableHighlight`
   justify-content: center;
   border-radius: 5px;
 `;
+
+export const TextActive = styled.Text`
+  color: #385775;
+`
+export const TextDisable = styled.Text`
+  color: #EEEEEE;
+`

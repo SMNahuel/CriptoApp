@@ -12,6 +12,8 @@ import {
   Title,
   TextInput,
   BotonBack,
+  TextActive,
+  TextDisable
 } from '../style/AddCrypto';
 
 const AddCrypto = props => {
@@ -35,7 +37,7 @@ const AddCrypto = props => {
       </BotonBack>
       {!loading ? (
         <InputContainer>
-          <Title style={styles.title}>Add a Cryptocurrency</Title>
+          <Title>Add a Cryptocurrency</Title>
           <TextInput
             label="Use a name or ticker symbol..."
             value={input}
@@ -45,12 +47,12 @@ const AddCrypto = props => {
 
           {input.length > 0 && (
             <AddBoton onPress={() => handlerAdd()}>
-              <Text style={styles.textActive}>ADD</Text>
+              <TextActive>ADD</TextActive>
             </AddBoton>
           )}
           {input.length === 0 && (
             <AddBoton>
-              <Text style={styles.textDisable}>ADD</Text>
+              <TextDisable>ADD</TextDisable>
             </AddBoton>
           )}
         </InputContainer>
@@ -61,14 +63,7 @@ const AddCrypto = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  textActive: {
-    color: '#385775',
-  },
-  textDisable: {
-    color: '#EEEEEE',
-  },
-});
+
 const mapStateToProps = state => {
   const {cryptos} = state;
   return {cryptos};
