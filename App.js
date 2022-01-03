@@ -17,7 +17,9 @@ import Home from './screens/Home';
 /* --------------- SCREEN */
 import reducer from './redux/reducer.js';
 
+/* Navigation tab */
 const Tab = createBottomTabNavigator();
+/* Store conect */
 const store = createStore(reducer);
 
 const App = () => {

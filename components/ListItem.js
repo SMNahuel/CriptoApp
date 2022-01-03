@@ -19,7 +19,6 @@ const ListItem = ({
 }) => {
   const priceChangeColor =
     priceChangePercentage24hs > 0 ? '#34C759' : '#FF3B30';
-
   return (
     <TouchableOpacity onPress={onPress}>
       <ItemWrapper>
@@ -33,7 +32,7 @@ const ListItem = ({
         </LeftWrapper>
 
         {/* Right side */}
-        <RightWrapper >
+        <RightWrapper>
           <Title>
             $
             {currentPrice.toFixed(2).toLocaleString('en-US', {currency: 'USD'})}
