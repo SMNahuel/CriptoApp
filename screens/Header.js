@@ -7,17 +7,20 @@ export default Header =(props)=> {
       <Appbar.Header 
       theme={{
           colors:{
-              primary:"#00aaff",
+              primary:"#385775",
              
           }
       
       }}
-      style={{flexDirection:"row",justifyContent:"center"}}
+      style={{flexDirection:"row",justifyContent:"space-around"}}
       >
        <Title style={{color:"white"}}>
-           {props.name}
+            CryptoTracker Pro
        </Title>
-        
+       <Title style={{color:"white"}}>
+            Hola
+       </Title>
+      {/* imagen */}
       </Appbar.Header>
     );
  
