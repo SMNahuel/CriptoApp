@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TextInput,
-  TouchableHighlight,
-  Alert,
-} from 'react-native';
+import {Text, StyleSheet, TouchableHighlight} from 'react-native';
 import Header from './Header';
 import {addCryptoCurrencie} from '../services';
+
+import {
+  Container,
+  InputContainer,
+  TextBack,
+  AddBoton,
+  Title,
+  TextInput,
+  BotonBack,
+} from '../style/AddCrypto';
 
 const AddCrypto = props => {
   const [input, setInput] = useState('');
@@ -21,23 +23,20 @@ const AddCrypto = props => {
     newContainer.push(input);
     await addCryptoCurrencie(newContainer, props.dispatch);
     setLoading(false);
-    setInput("")
-    props.navigation.navigate('Home')
-    
+    setInput('');
+    props.navigation.navigate('Home');
   };
   return (
-    <View style={styles.container}>
-      <TouchableHighlight
-        style={styles.back}
-        onPress={() => props.navigation.navigate('Home')}>
-        <Text style={styles.text}>{'<'} Back to list</Text>
-      </TouchableHighlight>
-
-      {!loading && (
-        <View style={styles.inputContainer}>
-          <Text style={styles.title}>Add a Cryptocurrency</Text>
+    <Container>
+      <BotonBack>
+        <TextBack onPress={() => props.navigation.navigate('Home')}>
+        {'<'} Back to list
+        </TextBack>
+      </BotonBack>
+      {!loading ? (
+        <InputContainer>
+          <Title style={styles.title}>Add a Cryptocurrency</Title>
           <TextInput
-            style={styles.textInput}
             label="Use a name or ticker symbol..."
             value={input}
             onChangeText={setInput}
@@ -45,67 +44,24 @@ const AddCrypto = props => {
           />
 
           {input.length > 0 && (
-            <TouchableHighlight style={styles.addButton}>
-              <Text style={styles.textActive} onPress={() => handlerAdd()}>
-                ADD
-              </Text>
-            </TouchableHighlight>
+            <AddBoton onPress={() => handlerAdd()}>
+              <Text style={styles.textActive}>ADD</Text>
+            </AddBoton>
           )}
           {input.length === 0 && (
-            <TouchableHighlight style={styles.addButton}>
+            <AddBoton>
               <Text style={styles.textDisable}>ADD</Text>
-            </TouchableHighlight>
+            </AddBoton>
           )}
-        </View>
+        </InputContainer>
+      ) : (
+        <Text> Espere</Text>
       )}
-      {loading && <Text> Espere</Text>}
-    </View>
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignSelf: 'stretch',
-    textAlign: 'center',
-    backgroundColor: '#FAFBFC',
-    padding: 10,
-  },
-  inputContainer: {
-    height: '75%',
-  },
-  back: {
-    flex: 1,
-  },
-  text: {
-    color: '#385775',
-  },
-  textInput: {
-    alignSelf: 'stretch',
-    paddingLeft: 25,
-    margin: 12,
-    borderWidth: 1,
-    borderColor: '#B7C0C6',
-    borderRadius: 10,
-  },
-  title: {
-    textAlign: 'left',
-    color: '#212B36',
-    fontSize: 24,
-    padding: 10,
-    fontWeight: 'bold',
-  },
-  addButton: {
-    margin: 10,
-    backgroundColor: '#FBD24D',
-    width: 100,
-    height: 20,
-    padding: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 5,
-  },
   textActive: {
     color: '#385775',
   },
