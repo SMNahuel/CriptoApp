@@ -7,17 +7,24 @@ import {Container, AddCrypto} from '../style/Home';
 import ListItem from '../components/ListItem';
 import {getMarketData} from '../services';
 import Header from './Header';
+
+
+/* Store */
 const mapStateToProps = state => {
   return {store: state};
 };
+
+
 const Home = props => {
+  
+  /* Request data to store */
   const [data, setData] = useState({
     cryptosUser: props.store.cryptos,
     loading: props.store.loading,
   });
 
   useEffect(() => {
-    console.log(data);
+    /* Request data  */
     getMarketData(data.cryptosUser, props.dispatch);
   }, [data]);
 
