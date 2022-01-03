@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-padding: 20px;
+  padding: 20px;
   flex: 1;
   justify-content: center;
   align-self: stretch;
@@ -30,13 +30,13 @@ export const TextInput = styled.TextInput`
 
 export const Title = styled.Text`
   text-align: left;
-  color: #212B36;
+  color: #212b36;
   font-size: 24px;
   font-weight: bold;
 `;
 
 export const AddBoton = styled.TouchableHighlight`
-  background-color: #FBD24D;
+  background-color: #fbd24d;
   width: 100px;
   height: 30px;
   align-items: center;
@@ -44,9 +44,15 @@ export const AddBoton = styled.TouchableHighlight`
   border-radius: 5px;
 `;
 
+export const ContainerBotonAdd = styled.View`
+  flex: 1;
+  align-items: flex-end;
+`;
+
 export const TextActive = styled.Text`
   color: #385775;
-`
+`;
+
 export const TextDisable = styled.Text`
-  color: #EEEEEE;
-`
+  color: #eeeeee;
+`;

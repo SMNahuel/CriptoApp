@@ -13,7 +13,8 @@ import {
   TextInput,
   BotonBack,
   TextActive,
-  TextDisable
+  TextDisable,
+  ContainerBotonAdd,
 } from '../style/AddCrypto';
 
 const AddCrypto = props => {
@@ -32,7 +33,7 @@ const AddCrypto = props => {
     <Container>
       <BotonBack>
         <TextBack onPress={() => props.navigation.navigate('Home')}>
-        {'<'} Back to list
+          {'<'} Back to list
         </TextBack>
       </BotonBack>
       {!loading ? (
@@ -44,17 +45,18 @@ const AddCrypto = props => {
             onChangeText={setInput}
             autoCapitalize="characters"
           />
-
-          {input.length > 0 && (
-            <AddBoton onPress={() => handlerAdd()}>
-              <TextActive>ADD</TextActive>
-            </AddBoton>
-          )}
-          {input.length === 0 && (
-            <AddBoton>
-              <TextDisable>ADD</TextDisable>
-            </AddBoton>
-          )}
+          <ContainerBotonAdd>
+            {input.length > 0 && (
+              <AddBoton onPress={() => handlerAdd()}>
+                <TextActive>ADD</TextActive>
+              </AddBoton>
+            )}
+            {input.length === 0 && (
+              <AddBoton>
+                <TextDisable>ADD</TextDisable>
+              </AddBoton>
+            )}
+          </ContainerBotonAdd>
         </InputContainer>
       ) : (
         <Text> Espere</Text>
@@ -62,7 +64,6 @@ const AddCrypto = props => {
     </Container>
   );
 };
-
 
 const mapStateToProps = state => {
   const {cryptos} = state;
