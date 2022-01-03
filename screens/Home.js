@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {View, Text, FlatList, Imagem, StyleSheet} from 'react-native';
 import {TextInput, Button, Card, Title, SafeAreaView} from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import {Container, AddCrypto} from '../style/Home';
 import ListItem from '../components/ListItem';
 import {getMarketData} from '../services';
 import Header from './Header';
@@ -22,7 +22,6 @@ const Home = props => {
   }, [data]);
 
   return (
-
     <View>
       <Header />
 
@@ -40,29 +39,14 @@ const Home = props => {
           />
         )}
       />
-      <View style={styles.container}>
+      <Container>
         {props.loading && <Text>Cargando </Text>}
-        <Text
-          style={styles.addCrypto}
-          onPress={() => props.navigation.navigate('Add')}>
+        <AddCrypto onPress={() => props.navigation.navigate('Add')}>
           + Add Crypto Current
-        </Text>
-      </View>
+        </AddCrypto>
+      </Container>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  addCrypto: {
-    color: '#385775',
-    fontSize: 16,
-  },
-});
 
 export default connect(mapStateToProps)(Home);
