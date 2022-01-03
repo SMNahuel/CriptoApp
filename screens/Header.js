@@ -11,7 +11,7 @@ export default (Header = props => {
       }}
       style={{flexDirection: 'row', justifyContent: 'space-around'}}>
       <Title style={{color: 'white'}}>CryptoTracker Pro</Title>
-      <Title style={{color: 'white'}}>Hola</Title>
+      <Title style={{color: 'white'}}></Title>
       {/* imagen */}
     </Appbar.Header>
   );
